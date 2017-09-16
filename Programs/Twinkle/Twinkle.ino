@@ -7,7 +7,6 @@
 #define NUM_LIGHTS  LIGHT_CONFIG_NUM_LIGHTS
 #define BRIGHTNESS  LIGHT_CONFIG_BRIGHTNESS
 
-// TODO(ERIN): move to LIGHT_CONFIG
 #define DELAY_MS    120
 
 #define num_elements(x)  (sizeof(x) / sizeof((x)[0]))
@@ -36,8 +35,8 @@ void loop() {
 
   for (int light = 0; light < NUM_LIGHTS; light++) {
     if (twinkle_location[light] > 0) {
-      uint32_t picker = light % (num_elements(xmas_colors));
-      uint32_t light_color = xmas_colors[picker];
+      uint32_t picker = light % (num_elements(cool_colors));
+      uint32_t light_color = cool_colors[picker];
       uint32_t fade_color;
       if (twinkle_location[light] > 15) {
         fade_color = LinearColorFade(BLACK, light_color, pow(((20 - twinkle_location[light])) / 5.0, 2));

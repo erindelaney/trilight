@@ -1,4 +1,4 @@
-#include <Adafruit_NeoPixel.h>
+ #include <Adafruit_NeoPixel.h>
 #include <LightConfig.h>
 #include <Colors.h>
 #include <Math.h>
@@ -7,7 +7,6 @@
 #define NUM_LIGHTS  LIGHT_CONFIG_NUM_LIGHTS
 #define BRIGHTNESS  LIGHT_CONFIG_BRIGHTNESS
 
-// TODO(ERIN): move to LIGHT_CONFIG
 #define NUM_TWINKLES 15
 #define DELAY_MS    25
 
