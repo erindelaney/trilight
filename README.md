@@ -11,6 +11,10 @@ LED art piece, hardware consisting of 3 connected rings
 2. Press "upload" (right facing arrow in top bar)
 
 
-Troubleshooting:
+Error connecting to board:
 - Tools/Board should be "Arduino/Genuino Uno"
 - Tools/Port should find and recognize the Arduino ex: dev/cu.usbmodem14511 (Arduino/Genuino Uno). If it doesn't find it, try restarting the IDE with the usb plugged in.
+
+
+Program not working:
+- Make sure libraries files are up to date (Especially colors.h)
