@@ -1,12 +1,4 @@
-/**************************************************************************/
-/*! 
-    @file     Colors.h
-    @author   Seth T. & Erin D.
-
-    This is a central place to define all the pretty colors.
-*/
-/**************************************************************************/
-
+// Centrally defined colors
 
 uint32_t BLACK  = Adafruit_NeoPixel::Color(0, 0, 0);
 uint32_t WHITE  = Adafruit_NeoPixel::Color(255, 255, 255);

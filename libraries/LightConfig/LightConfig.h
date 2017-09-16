@@ -1,3 +1,4 @@
+// Hardware configuration
 
 #define LIGHT_CONFIG_PIN_NUM		3
 
