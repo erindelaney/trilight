@@ -10,6 +10,8 @@ LED art piece, hardware consisting of 3 connected rings
 1. Connect USB cable
 2. Press "upload" (right facing arrow in top bar)
 
+##Troubleshooting
+
 
 Error connecting to board:
 - Tools/Board should be "Arduino/Genuino Uno"
