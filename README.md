@@ -7,8 +7,10 @@ LED art piece, hardware consisting of 3 connected rings
 3. Open a program in the Arduino IDE
 
 ## Running programs
-1. Connect USB cable
-2. Press "upload" (right facing arrow in top bar)
+1. Open program from the "Programs" folders in the Arduino IDE
+2. Make any edits (if desired) and save
+3. Connect USB cable
+4. Press "upload" (right facing arrow in top bar)
 
 ## Troubleshooting
 

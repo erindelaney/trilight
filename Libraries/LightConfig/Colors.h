@@ -1,4 +1,4 @@
-// Centrally defined colors
+// CENTRALLY DEFINED COLORS
 
 uint32_t BLACK  = Adafruit_NeoPixel::Color(0, 0, 0);
 uint32_t WHITE  = Adafruit_NeoPixel::Color(255, 255, 255);

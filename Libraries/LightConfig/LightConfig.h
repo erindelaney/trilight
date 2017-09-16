@@ -1,4 +1,4 @@
-// Hardware configuration
+// HARDWARE CONFIGURATION
 
 #define PIN_NUMBER  3
 
