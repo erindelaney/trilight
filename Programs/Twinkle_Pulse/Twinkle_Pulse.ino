@@ -1,11 +1,13 @@
- #include <Adafruit_NeoPixel.h>
+// UNIVERSAL SETUP
+
+#include <Adafruit_NeoPixel.h>
 #include <LightConfig.h>
 #include <Colors.h>
 #include <Math.h>
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LIGHTS, PIN_NUMBER, NEO_GRB + NEO_KHZ800);
 
-#define PIN_NUMBER  LIGHT_CONFIG_PIN_NUM
-#define NUM_LIGHTS  LIGHT_CONFIG_NUM_LIGHTS
-#define BRIGHTNESS  LIGHT_CONFIG_BRIGHTNESS
+
+// PROGRAM-SPECIFIC VARIABLE DEFINITIONS
 
 #define NUM_TWINKLES 15
 #define DELAY_MS    25
@@ -18,8 +20,7 @@ double maxDensity = 0.2;
 double densityStep = 0.02;
 
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LIGHTS, PIN_NUMBER, NEO_GRB + NEO_KHZ800);
-
+// PROGRAM
 
 void setup() {
   strip.setBrightness(BRIGHTNESS);

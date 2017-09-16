@@ -1,10 +1,9 @@
 // Hardware configuration
 
-#define LIGHT_CONFIG_PIN_NUM		3
+#define PIN_NUMBER  3
 
-#define LIGHT_CONFIG_NUM_LIGHTS		300
-#define LIGHT_CONFIG_BRIGHTNESS		32
-
+#define NUM_LIGHTS  300
+#define BRIGHTNESS  32
 
 #define LIGHT_CONFIG_INTERSECTIONS {\
   {  1, 69, 70, 141, 298},\

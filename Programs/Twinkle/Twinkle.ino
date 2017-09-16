@@ -1,21 +1,22 @@
+// UNIVERSAL SETUP
+
 #include <Adafruit_NeoPixel.h>
 #include <LightConfig.h>
 #include <Colors.h>
 #include <Math.h>
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LIGHTS, PIN_NUMBER, NEO_GRB + NEO_KHZ800);
 
-#define PIN_NUMBER  LIGHT_CONFIG_PIN_NUM
-#define NUM_LIGHTS  LIGHT_CONFIG_NUM_LIGHTS
-#define BRIGHTNESS  LIGHT_CONFIG_BRIGHTNESS
+
+// PROGRAM-SPECIFIC VARIABLE DEFINITIONS
 
 #define DELAY_MS    120
-
 #define num_elements(x)  (sizeof(x) / sizeof((x)[0]))
 
 double density = 0.03; //average percent of lights turned on
 char twinkle_location[NUM_LIGHTS] = {};
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LIGHTS, PIN_NUMBER, NEO_GRB + NEO_KHZ800);
 
+// PROGRAM
 
 void setup() {
   strip.setBrightness(BRIGHTNESS);

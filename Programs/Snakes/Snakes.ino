@@ -1,10 +1,12 @@
+// UNIVERSAL SETUP
+
 #include <Adafruit_NeoPixel.h>
 #include <LightConfig.h>
 #include <Colors.h>
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LIGHTS, PIN_NUMBER, NEO_GRB + NEO_KHZ800);
 
-#define PIN_NUMBER  LIGHT_CONFIG_PIN_NUM
-#define NUM_LIGHTS  LIGHT_CONFIG_NUM_LIGHTS
-#define BRIGHTNESS  LIGHT_CONFIG_BRIGHTNESS
+
+// PROGRAM-SPECIFIC VARIABLE DEFINITIONS
 
 #define NUM_SNAKES  3
 #define TAILS       7
@@ -20,14 +22,12 @@ int snake_direction[NUM_SNAKES] = {};
 int snake_can_jump[NUM_SNAKES] = {};
 short snake_tails[NUM_SNAKES][TAILS] = {};
 
-
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LIGHTS, PIN_NUMBER, NEO_GRB + NEO_KHZ800);
-
-
 uint32_t fun_colors[] = {PLUM, BERRY, SKY};
 
 
-void setup() { 
+// PROGRAM
+
+void setup() {
   for (int s = 0; s < NUM_SNAKES; s++) {
     snake_location[s] = 50*s;
     snake_direction[s] = 1;
@@ -37,7 +37,7 @@ void setup() {
       snake_tails[s][t] = 0;
     }
   }
-  
+
   strip.setBrightness(BRIGHTNESS);
   strip.begin();
   strip.clear();
@@ -55,7 +55,7 @@ void loop() {
     for (int i_index = 0; i_index < num_intersections; i_index += 1) {
       int *intersection_points = intersections[i_index];
       for (int j = 0; intersection_points[j] > 0; j++) {
-        int led_index = intersection_points[j];        
+        int led_index = intersection_points[j];
         strip.setPixelColor(led_index, fun_colors[(f + i_index + j) % num_elements(fun_colors)]);
       }
     }
@@ -80,7 +80,7 @@ void loop() {
       // see if this is an intersection
       for (int i_index = 0; i_index < num_elements(intersections); i_index += 1) {
         short *i_points = intersections[i_index];
-          
+
         for (int j = 0; i_points[j] > 0; j++) {
           if (i_points[j] == current_led) {
             // This led is part of an intersection
@@ -113,7 +113,7 @@ void loop() {
         snake_tails[snake_index][t+1] = snake_tails[snake_index][t];
       }
 
-      snake_tails[snake_index][0] = next_led;      
+      snake_tails[snake_index][0] = next_led;
       snake_location[snake_index] = next_led;
 
       // Turn on leds in the tail
@@ -135,12 +135,12 @@ void loop() {
 
 // Return colors that is a blend of a and b.
 // a * (1 - percent) + b * (percent);
-// 
+//
 uint32_t LinearColorFade(uint32_t color_a, uint32_t color_b, float percent) {
   uint32_t r_a = (uint8_t)(color_a >> 16);
   uint32_t r_b = (uint8_t)(color_b >> 16);
   int16_t r_diff = r_b - r_a;
-  
+
   uint32_t g_a = (uint8_t)(color_a >> 8);
   uint32_t g_b = (uint8_t)(color_b >> 8);
   int16_t g_diff = g_b - g_a;
