@@ -20,6 +20,8 @@ int inner_left[] = {280, 299};
 int lips_start_index[] = {48, 70, 140, 280};
 int lips_end_index[] = {69, 91, 159, 299};
 
+double num_pulse = 3;
+
 
 
 
@@ -31,7 +33,7 @@ void setup() {
       int lip_end = lips_end_index[lip];
       
       for (int j = lip_start; j < lip_end; j++) {
-        lip_location[j] = 19;
+        lip_location[j] = 20;
       }
   }
   strip.setBrightness(BRIGHTNESS);
@@ -42,46 +44,39 @@ void setup() {
 
 
 void loop() {
-  int k = 0;
-  for (int a = 0; a < 3; a++) {
-    
-  
-  if (k < 3) {
-  for (int light = 0; light < NUM_LIGHTS; light++) {
-    if (lip_location[light] > 0) {
-    uint32_t light_color = BERRY;
-    uint32_t fade_color;
-      if (lip_location[light] > 10) {
-      fade_color = LinearColorFade(BLACK, light_color, pow(((20 - lip_location[light])) / 12.0, 1));
+  if (num_pulse > 0.5) {
+    for (int light = 0; light < NUM_LIGHTS; light++) {
+      if (lip_location[light] > 0) {
+      uint32_t light_color = BERRY;
+      uint32_t fade_color;
+        if (lip_location[light] > 10) {
+        fade_color = LinearColorFade(BLACK, light_color, pow(((21 - lip_location[light])) / 12.0, 1));
+        }
+        else {
+        fade_color = LinearColorFade(BLACK, light_color, pow(lip_location[light] / 10.0, 0.95));
+        }
+      strip.setPixelColor(light, fade_color);
+        if (lip_location[light] == 1) {
+        lip_location[light] = 20;
+        }
+        else {
+        lip_location[light] -= 1;
+        }
       }
       else {
-      fade_color = LinearColorFade(BLACK, light_color, pow(lip_location[light] / 10.0, 0.95));
-      }
-    strip.setPixelColor(light, fade_color);
-      if (lip_location[light] == 1) {
-      lip_location[light] = 19;
-      }
-      else {
-      lip_location[light] -= 1;
+      strip.setPixelColor(light, BLACK);
       }
     }
-    else {
-    strip.setPixelColor(light, BLACK);
-    }
+    num_pulse -= 0.05;
   }
-strip.show();
-delay(DELAY_MS);
-}
-
-else {
-  for (int m = 0; m < NUM_LIGHTS; m++) {
-    strip.setPixelColor(m, WHITE);
+  else {
+    for (int m = 0; m < NUM_LIGHTS; m++){
+      strip.setPixelColor(m, WHITE);
+      
+    }
   }
   strip.show();
-  k = 0;
-}
-
-}
+  delay(DELAY_MS);
 }
 
 
