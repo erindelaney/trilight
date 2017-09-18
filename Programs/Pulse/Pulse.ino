@@ -21,8 +21,8 @@ int lips_start_index[] = {48, 70, 140, 280};
 int lips_end_index[] = {69, 91, 159, 299};
 
 double num_pulse = 3;
-
-
+double pulse = num_pulse;
+int pulse_steps = 20;
 
 
 // PROGRAM
@@ -44,13 +44,13 @@ void setup() {
 
 
 void loop() {
-  if (num_pulse > 0.5) {
+  if (pulse > 0.5) {
     for (int light = 0; light < NUM_LIGHTS; light++) {
       if (lip_location[light] > 0) {
       uint32_t light_color = BERRY;
       uint32_t fade_color;
         if (lip_location[light] > 10) {
-        fade_color = LinearColorFade(BLACK, light_color, pow(((21 - lip_location[light])) / 12.0, 1));
+        fade_color = LinearColorFade(BLACK, light_color, pow(((20 - lip_location[light])) / 12.0, 1));
         }
         else {
         fade_color = LinearColorFade(BLACK, light_color, pow(lip_location[light] / 10.0, 0.95));
@@ -67,12 +67,19 @@ void loop() {
       strip.setPixelColor(light, BLACK);
       }
     }
-    num_pulse -= 0.05;
+    pulse -= 0.05;
   }
   else {
-    for (int m = 0; m < NUM_LIGHTS; m++){
-      strip.setPixelColor(m, WHITE);
-      
+    for (int n = 0; n < 10; n++) {
+    strip.setPixelColor(48-n, WHITE);
+    strip.setPixelColor(280-n, WHITE);
+    strip.setPixelColor(159+n, WHITE);
+    strip.setPixelColor(91+n, WHITE);
+    strip.setPixelColor(138-n, WHITE);
+    strip.setPixelColor(n, WHITE);
+    strip.show();
+    delay(DELAY_MS);
+    pulse = num_pulse;
     }
   }
   strip.show();
@@ -82,20 +89,9 @@ void loop() {
 
 
 
-//  for (int f = 0; f < 300; f++) {
-//    if (f >= lips_start && f<= lips_end) {
-//    strip.setPixelColor(f, RED);
-//    strip.show();
-
-
-//  strip.clear();
-
-//    delay(DELAY_MS);
-//    strip.clear();
-
 // Return colors that is a blend of a and b.
 // a * (1 - percent) + b * (percent);
-//
+
 uint32_t LinearColorFade(uint32_t color_a, uint32_t color_b, float percent) {
   uint32_t r_a = (uint8_t)(color_a >> 16);
   uint32_t r_b = (uint8_t)(color_b >> 16);
