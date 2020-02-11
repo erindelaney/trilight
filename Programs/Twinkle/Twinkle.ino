@@ -9,7 +9,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LIGHTS, PIN_NUMBER, NEO_GRB + NE
 
 // PROGRAM-SPECIFIC VARIABLE DEFINITIONS
 
-#define DELAY_MS    120
+#define DELAY_MS    40
 #define num_elements(x)  (sizeof(x) / sizeof((x)[0]))
 
 double density = 0.03; //average percent of lights turned on
