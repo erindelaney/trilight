@@ -9,7 +9,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LIGHTS, PIN_NUMBER, NEO_GRB + NE
 
 // PROGRAM-SPECIFIC VARIABLE DEFINITIONS
 
-#define DELAY_MS    40
+#define DELAY_MS    50
 #define num_elements(x)  (sizeof(x) / sizeof((x)[0]))
 
 double density = 0.03; //average percent of lights turned on
@@ -36,8 +36,8 @@ void loop() {
 
   for (int light = 0; light < NUM_LIGHTS; light++) {
     if (twinkle_location[light] > 0) {
-      uint32_t picker = light % (num_elements(cool_colors));
-      uint32_t light_color = cool_colors[picker];
+      uint32_t picker = light % (num_elements(best_colors));
+      uint32_t light_color = best_colors[picker];
       uint32_t fade_color;
       if (twinkle_location[light] > 15) {
         fade_color = LinearColorFade(BLACK, light_color, pow(((20 - twinkle_location[light])) / 5.0, 2));
