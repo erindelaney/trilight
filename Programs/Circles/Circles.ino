@@ -54,3 +54,4 @@ void loop() {
     strip.setPixelColor(getIndexFromOrigin(1, i), BLACK);
     strip.setPixelColor(getIndexFromOrigin(2, i), BLACK);
   }
+}
