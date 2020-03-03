@@ -57,7 +57,7 @@ void loop() {
         strip.setPixelColor(reverseCircleOrigin(a, i), BERRY); 
     }
       strip.show();
-        delay(50); 
+        delay(100); 
     for (int b = 0; b < circles; b++) {
         strip.setPixelColor(forwardCircleOrigin(b, i), BLACK);
         strip.setPixelColor(reverseCircleOrigin(b, i), BLACK); 
